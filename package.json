@@ -1,0 +1,12 @@
+{
+  "name": "10hdigest",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Nicolas BAPTISTE",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp-connect": "^2.3.1",
+    "gulp-server-livereload": "^1.7.0",
+    "gulp-watch-less": "^1.0.1"
+  }
+}
