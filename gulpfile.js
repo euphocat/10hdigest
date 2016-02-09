@@ -1,11 +1,13 @@
 var gulp = require('gulp'),
     connect = require('gulp-connect'),
-    less = require('gulp-less');
+    less = require('gulp-less'),
+    open = require('gulp-open');
 
 gulp.task('webserver', function() {
     connect.server({
         livereload: true,
-        root: 'src'
+        root: 'src',
+        port: 3000
     });
 });
 
@@ -27,4 +29,13 @@ gulp.task('watch', function() {
     gulp.watch('src/*.html', ['html']);
 });
 
-gulp.task('default', ['less', 'webserver', 'watch']);
+gulp.task('open', function(){
+    var options = {
+        uri: 'http://localhost:3000',
+        app: '/usr/bin/google-chrome-stable'
+    };
+    gulp.src(__filename)
+        .pipe(open(options));
+});
+
+gulp.task('default', ['less', 'webserver', 'watch', 'open']);
