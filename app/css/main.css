@@ -1,3 +1,6 @@
+html {
+  height: 100%;
+}
 body {
   padding: 0;
   margin: 0;
@@ -38,6 +41,7 @@ h3 {
 }
 section {
   margin-left: 250px;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -54,10 +58,17 @@ section .teaser {
   background: rgba(255, 255, 255, 0.9);
   margin: 1rem;
 }
-section .full img,
-section .teaser img {
-  width: 200px;
+section .teaser {
+  cursor: pointer;
+  transition: all .25s linear;
+}
+section .teaser:hover {
+  background: #ffffff;
+}
+section .visual {
   box-shadow: 0 0 5px #000;
+  width: 200px;
+  height: 200px;
 }
 section .header {
   margin: 0 0 0 1rem;

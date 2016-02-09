@@ -4,10 +4,27 @@
   "description": "",
   "author": "Nicolas BAPTISTE",
   "license": "ISC",
+  "scripts": {
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "watch-css": "catw -c 'lessc -' 'app/less/*.less' -o app/css/main.css -v",
+    "bs": "browser-sync start --server --files \"index.html, app/**/*.js, app/css/*.css\"",
+    "start": "concurrent \"npm run tsc:w\" \"npm run bs\" \"npm run watch-css\" "
+  },
+  "dependencies": {
+    "angular2": "2.0.0-beta.3",
+    "systemjs": "0.19.6",
+    "es6-promise": "^3.0.2",
+    "es6-shim": "^0.33.3",
+    "reflect-metadata": "0.1.2",
+    "rxjs": "5.0.0-beta.0",
+    "zone.js": "0.5.11"
+  },
   "devDependencies": {
-    "gulp-connect": "^2.3.1",
-    "gulp-open": "^1.0.0",
-    "gulp-server-livereload": "^1.7.0",
-    "gulp-watch-less": "^1.0.1"
+    "catw": "^1.0.1",
+    "concurrently": "^1.0.0",
+    "less": "2.6.0",
+    "lite-server": "^2.0.1",
+    "typescript": "^1.7.5"
   }
 }
