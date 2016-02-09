@@ -1,39 +1,94 @@
 @red-logo: #af3e44;
+@menu-width: 250px;
 
 body {
   padding: 0;
   margin: 0;
   font-family: 'Open Sans', serif;
   color: #2e2e2e;
+
+  background-color: hsl(34, 53%, 82%);
+  background-image: repeating-linear-gradient(45deg, transparent 5px, hsla(197, 62%, 11%, 0.5) 5px, hsla(197, 62%, 11%, 0.5) 10px,
+  hsla(5, 53%, 63%, 0) 10px, hsla(5, 53%, 63%, 0) 35px, hsla(5, 53%, 63%, 0.5) 35px, hsla(5, 53%, 63%, 0.5) 40px,
+  hsla(197, 62%, 11%, 0.5) 40px, hsla(197, 62%, 11%, 0.5) 50px, hsla(197, 62%, 11%, 0) 50px, hsla(197, 62%, 11%, 0) 60px,
+  hsla(5, 53%, 63%, 0.5) 60px, hsla(5, 53%, 63%, 0.5) 70px, hsla(35, 91%, 65%, 0.5) 70px, hsla(35, 91%, 65%, 0.5) 80px,
+  hsla(35, 91%, 65%, 0) 80px, hsla(35, 91%, 65%, 0) 90px, hsla(5, 53%, 63%, 0.5) 90px, hsla(5, 53%, 63%, 0.5) 110px,
+  hsla(5, 53%, 63%, 0) 110px, hsla(5, 53%, 63%, 0) 120px, hsla(197, 62%, 11%, 0.5) 120px, hsla(197, 62%, 11%, 0.5) 140px
+  ),
+  repeating-linear-gradient(135deg, transparent 5px, hsla(197, 62%, 11%, 0.5) 5px, hsla(197, 62%, 11%, 0.5) 10px,
+          hsla(5, 53%, 63%, 0) 10px, hsla(5, 53%, 63%, 0) 35px, hsla(5, 53%, 63%, 0.5) 35px, hsla(5, 53%, 63%, 0.5) 40px,
+          hsla(197, 62%, 11%, 0.5) 40px, hsla(197, 62%, 11%, 0.5) 50px, hsla(197, 62%, 11%, 0) 50px, hsla(197, 62%, 11%, 0) 60px,
+          hsla(5, 53%, 63%, 0.5) 60px, hsla(5, 53%, 63%, 0.5) 70px, hsla(35, 91%, 65%, 0.5) 70px, hsla(35, 91%, 65%, 0.5) 80px,
+          hsla(35, 91%, 65%, 0) 80px, hsla(35, 91%, 65%, 0) 90px, hsla(5, 53%, 63%, 0.5) 90px, hsla(5, 53%, 63%, 0.5) 110px,
+          hsla(5, 53%, 63%, 0) 110px, hsla(5, 53%, 63%, 0) 140px, hsla(197, 62%, 11%, 0.5) 140px, hsla(197, 62%, 11%, 0.5) 160px
+  );
 }
 
 .main {
   display: flex;
 }
 
-header {
+h1, h2, h3 {
+  font-family: 'Oswald';
+}
+
+.center {
+  text-align: center;
+}
+
+.main > header {
+
+  width: @menu-width;
+  height: 100%;
+  background: white;
+  position: fixed;
+  .center;
+
+  > div {
+    width: 250px;
+  }
+
   aside  {
+    font-size: .8rem;
+    text-align: left;
     margin: 1rem;
+  }
+
+  input {
+    width: calc(100% - 7px);
+    padding: 5px;
   }
 }
 
-article img {
-  width: 200px;
-  border: 5px white solid;
-}
 
 section {
 
-  width: 900px;
+  margin-left: @menu-width;
+  display: flex;
 
-  article {
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+
+  header {
     display: flex;
-    padding: 1em;
-    background: #eee;
-    margin: 1rem;
   }
 
+  .full,
   .teaser {
+    max-width: 900px;
+    padding: 1em;
+    background: rgba(255, 255, 255, 0.9);
+    margin: 1rem;
+
+    img {
+      width: 200px;
+      box-shadow: 0 0 5px #000;
+    }
+  }
+
+  .header {
     margin: 0 0 0 1rem;
 
     > span {
@@ -42,7 +97,6 @@ section {
 
     h1 {
       margin: 0 0 1rem;
-      font-family: 'Oswald';
       font-size: 2rem;
     }
 
