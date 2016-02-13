@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>10h Digest</title>
+  <base href="/">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open%20Sans">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oswald">
+
+  <!-- scripts:start -->
+  <!-- scripts:end -->
+
+  <script>
+    System.config({
+      format: 'register',
+      defaultJSExtensions: 'js',
+      map: {
+        angular2: 'lib/angular2',
+        rxjs: 'lib/rxjs'
+      }
+    });
+    System.import('main')
+      .then(null, console.error.bind(console));
+  </script>
+</head>
+<body>
+
+<my-app></my-app>
+
+</body>
+</html>

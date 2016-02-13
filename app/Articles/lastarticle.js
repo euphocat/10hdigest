@@ -1,5 +1,6 @@
 import {Component} from "angular2/core";
 import {Router} from "angular2/router";
+
 import {Article} from "./article";
 
 @Component({
@@ -22,9 +23,7 @@ import {Article} from "./article";
         <h1>{{ article.title }}</h1>
 
         <div class="description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-          nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          {{ article.teaser }}
         </div>
 
         <ul class="tags">
@@ -38,36 +37,49 @@ import {Article} from "./article";
     `
 })
 export class LastArticles {
-  public articles:Article[] = [
-    {
-      id: 1,
-      title: 'Half Moon Run - Sun Leads On Me',
-      teaser: '11471808',
-      deezerWidgetId: 11471808,
-      body: 'AZEAEAEAE',
-      pubDate: new Date('2016-02-09')
-    }
-  ];
 
-  constructor (private _router:Router) {
+  static get parameters() {
+    return [[Router]];
+  }
 
+  constructor (_router) {
 
-    this.articles.push({
-      id: 2,
-      title: 'test',
-      teaser: '1234',
-      deezerWidgetId: 1234,
-      body: 'AZEAEAEAE',
-      pubDate: new Date('2016-02-09')
-    });
+    this._router = _router;
+
+    this.articles = [
+      {
+        id: 1,
+        title: 'Half Moon Run - Sun Leads On Me',
+        teaser: 'A cooler nice album by a cool band youhou!',
+        deezerWidgetId: 11471808,
+        body: 'AZEAEAEAE',
+        pubDate: new Date('2016-02-09')
+      },
+      {
+        id: 2,
+        title: 'Opeth - Damnation',
+        teaser: 'Acoustic for metalheads and normal people.',
+        deezerWidgetId: 72266,
+        body: 'AZEAEAEAE',
+        pubDate: new Date('2016-02-09')
+      },
+      {
+        id: 21,
+        title: 'test - pouet',
+        teaser: '1234',
+        deezerWidgetId: 122,
+        body: 'AZEAEAEAE',
+        pubDate: new Date('2016-02-09')
+      }
+    ];
 
   }
 
-  onClickArticle (article:Article) {
+  onClickArticle (article) {
     this._router.navigate(['Article', {id: article.id}]);
   }
 
-  buildDeezerLink (id:Number) {
+  buildDeezerLink (id) {
 
     const url = 'https://www.deezer.com/plugins/player';
     const attrs = {
@@ -80,15 +92,13 @@ export class LastArticles {
       layout: 'dark',
       size: 'medium',
       type: 'album',
-      app_id: 1
+      app_id: 1,
+      id
     };
-
-    attrs.id = id;
 
     return url + '?' + Object
         .keys(attrs)
-        .map(function (key) {
-          return `${key}=${attrs[key]}`
-        }).join('&');
+        .map((key) => `${key}=${attrs[key]}`)
+        .join('&');
   }
 }

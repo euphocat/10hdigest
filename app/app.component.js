@@ -10,7 +10,7 @@ import {ArticleDetail} from "./Articles/articledetail";
     <div class="main">
       <header>
         <div>
-          <a [routerLink]="['Home']"><img src="app/images/logo.jpg" alt="logo"></a>
+          <a [routerLink]="['Home']"><img src="images/logo.jpg" alt="logo"></a>
 
           <aside>
             <p>All test my favorite music. Not especially the last trendy things, but cool anyway.</p>
@@ -27,7 +27,7 @@ import {ArticleDetail} from "./Articles/articledetail";
 })
 
 @RouteConfig([
-    { path: '/', name: 'Home', component: LastArticles }
+    { path: '/', name: 'Home', component: LastArticles },
     { path: '/article/:id', name: 'Article', component: ArticleDetail }
 ])
 
