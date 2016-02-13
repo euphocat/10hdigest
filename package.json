@@ -7,7 +7,7 @@
   "scripts": {
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "babel": "babel app -d dist",
+    "babel": "babel app --watch -d dist",
     "link-dependencies": "node utils/replaceScripts.js",
     "watch-css": "catw -c 'lessc -' 'app/less/*.less' -o dist/css/main.css -v",
     "browser-sync": "node utils/server.js",
