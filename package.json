@@ -7,9 +7,15 @@
   "scripts": {
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "watch-css": "catw -c 'lessc -' 'app/less/*.less' -o app/css/main.css -v",
-    "bs": "browser-sync start --server --files \"index.html, app/**/*.js, app/css/*.css\"",
-    "start": "concurrent \"npm run tsc:w\" \"npm run bs\" \"npm run watch-css\" "
+    "link-dependencies": "node utils/replaceScripts.js",
+    "watch-css": "catw -c 'lessc -' 'app/less/*.less' -o dist/css/main.css -v",
+    "browser-sync": "node utils/server.js",
+    "prestart": "npm run clean; npm run copy && npm run copy-lib; npm run link-dependencies;",
+    "start": "concurrent \"npm run tsc:w\" \"npm run watch-css\" & sleep 2;",
+    "poststart": "npm run browser-sync",
+    "clean": "rm dist/* -Rf && mkdir dist/css",
+    "copy": "cp app/index.html dist && cp -R app/images dist",
+    "copy-lib": "node utils/build.js && cp -R node_modules/angular2 dist/lib && cp -R node_modules/rxjs dist/lib"
   },
   "dependencies": {
     "angular2": "2.0.0-beta.3",
@@ -23,8 +29,16 @@
   "devDependencies": {
     "catw": "^1.0.1",
     "concurrently": "^1.0.0",
+    "jspm": "^0.16.27",
     "less": "2.6.0",
     "lite-server": "^2.0.1",
-    "typescript": "^1.7.5"
+    "typescript": "^1.7.5",
+    "uglify-js": "^2.6.1"
+  },
+  "jspm": {
+    "dependencies": {
+      "angular2": "npm:angular2@^2.0.0-beta.6"
+    },
+    "devDependencies": {}
   }
 }

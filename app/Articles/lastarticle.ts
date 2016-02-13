@@ -22,9 +22,7 @@ import {Article} from "./article";
         <h1>{{ article.title }}</h1>
 
         <div class="description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-          nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          {{ article.teaser }}
         </div>
 
         <ul class="tags">
@@ -42,8 +40,16 @@ export class LastArticles {
     {
       id: 1,
       title: 'Half Moon Run - Sun Leads On Me',
-      teaser: '11471808',
+      teaser: 'A cooler nice album by a cool band youhou!',
       deezerWidgetId: 11471808,
+      body: 'AZEAEAEAE',
+      pubDate: new Date('2016-02-09')
+    },
+    {
+      id: 2,
+      title: 'Opeth - Damnation',
+      teaser: 'Acoustic for metalheads and normal people.',
+      deezerWidgetId: 72266,
       body: 'AZEAEAEAE',
       pubDate: new Date('2016-02-09')
     }
@@ -51,12 +57,11 @@ export class LastArticles {
 
   constructor (private _router:Router) {
 
-
     this.articles.push({
-      id: 2,
-      title: 'test',
+      id: 21,
+      title: 'test - pouet',
       teaser: '1234',
-      deezerWidgetId: 1234,
+      deezerWidgetId: 122,
       body: 'AZEAEAEAE',
       pubDate: new Date('2016-02-09')
     });
@@ -80,15 +85,13 @@ export class LastArticles {
       layout: 'dark',
       size: 'medium',
       type: 'album',
-      app_id: 1
+      app_id: 1,
+      id
     };
-
-    attrs.id = id;
 
     return url + '?' + Object
         .keys(attrs)
-        .map(function (key) {
-          return `${key}=${attrs[key]}`
-        }).join('&');
+        .map((key) => `${key}=${attrs[key]}`)
+        .join('&');
   }
 }
