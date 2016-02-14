@@ -5,8 +5,6 @@
   "author": "Nicolas BAPTISTE",
   "license": "ISC",
   "scripts": {
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
     "babel": "babel app --watch -d dist",
     "link-dependencies": "node utils/replaceScripts.js",
     "watch-css": "catw -c 'lessc -' 'app/less/*.less' -o dist/css/main.css -v",
@@ -35,16 +33,8 @@
     "babel-preset-es2015": "^6.5.0",
     "catw": "^1.0.1",
     "concurrently": "^1.0.0",
-    "jspm": "^0.16.27",
     "less": "2.6.0",
     "lite-server": "^2.0.1",
-    "typescript": "^1.7.5",
     "uglify-js": "^2.6.1"
-  },
-  "jspm": {
-    "dependencies": {
-      "angular2": "npm:angular2@^2.0.0-beta.6"
-    },
-    "devDependencies": {}
   }
 }
